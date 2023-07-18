@@ -10,6 +10,7 @@ export default function Price() {
 
     async function getCoin() {
 
+        // if you want to copy and use this you must get your own key from https://www.coinapi.io/
         let key = import.meta.env.VITE_API_KEY
         // let api =  `baseurl.com/apikey=${key}&symbol=${params.symbol}`
         let api = `http://rest.coinapi.io/v1/exchangerate/${params.symbol}/USD?apikey=${key}`
