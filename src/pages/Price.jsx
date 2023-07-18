@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 
 export default function Price() {
     
+    // this is a function that allows you to change the url without having to have a link component
+    const navigate = useNavigate()
     const [coin, setCoin] = useState({})
 
     const params = useParams() // { symbol: 'BTC' }
@@ -19,6 +21,8 @@ export default function Price() {
         const data = await response.json()
         console.log(data)
         setCoin(data)
+        // this is how to change to another page without a link that you click
+        // navigate('/currencies')
     }
 
     useEffect(()=>{
@@ -29,8 +33,7 @@ export default function Price() {
             getCoin()
         }
         ////test stuff
-        //test stuff
-        
+        //test stuff        
         
         // alert('works')  
     }, [])
@@ -39,7 +42,8 @@ export default function Price() {
         return (
             <div>            
                 <h1>{coin.asset_id_base}/{coin.asset_id_quote}</h1>
-                <h2>{coin.rate}</h2>
+                <h2>{coin.rate}</h2> 
+                <button onClick={()=>navigate('/currencies')}>Back</button>               
             </div>
         )
     }
