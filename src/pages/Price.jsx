@@ -22,7 +22,16 @@ export default function Price() {
     }
 
     useEffect(()=>{
-        getCoin()
+        console.log('useEffect')
+        // this conditional makes it so we dont rerender multiple times while editing the code
+        if (!coin.rate){
+            console.log('getCoin')
+            getCoin()
+        }
+        ////test stuff
+        //test stuff
+        
+        
         // alert('works')  
     }, [])
 
